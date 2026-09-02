@@ -1,511 +1,522 @@
-```html
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Alex Rivera | Learn by Doing</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --forest-dark: #1b382b;
-      --forest-mid: #2d5a43;
-      --forest-accent: #3f7d5c;
-      --sand-light: #fbf9f4;
-      --sand-card: #ffffff;
-      --sand-border: #e6dfd3;
-      --pacific-blue: #0284c7;
-      --pacific-soft: #e0f2fe;
-      --calpoly-gold: #c69214;
-      --text-main: #243027;
-      --text-muted: #5e6d62;
-      --radius: 12px;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Journey & Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --forest-deep: #1b382b;
+            --forest-mid: #2d5a42;
+            --forest-light: #417356;
+            --sand-light: #f7f4ee;
+            --sand-mid: #e8e2d5;
+            --ocean-accent: #2a7b88;
+            --sun-accent: #e09f53;
+            --text-dark: #1e2822;
+            --text-muted: #526358;
+            --white: #ffffff;
+            --card-shadow: 0 8px 24px rgba(27, 56, 43, 0.08);
+            --radius-lg: 16px;
+            --radius-md: 10px;
+            --radius-sm: 6px;
+        }
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
 
-    html {
-      scroll-behavior: smooth;
-    }
+        body {
+            font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: var(--sand-light);
+            color: var(--text-dark);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
 
-    body {
-      font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
-      background-color: var(--sand-light);
-      color: var(--text-main);
-      line-height: 1.6;
-    }
+        /* Layout Architecture */
+        .container {
+            max-width: 1050px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
 
-    header {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      background: rgba(251, 249, 244, 0.92);
-      backdrop-filter: blur(10px);
-      border-bottom: 1px solid var(--sand-border);
-    }
+        /* Navigation Bar */
+        header {
+            position: sticky;
+            top: 0;
+            background-color: rgba(247, 244, 238, 0.92);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid var(--sand-mid);
+        }
 
-    .nav-container {
-      max-width: 1080px;
-      margin: 0 auto;
-      padding: 1rem 1.5rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
+        .nav-wrapper {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 72px;
+        }
 
-    .brand {
-      font-weight: 700;
-      font-size: 1.15rem;
-      color: var(--forest-dark);
-      text-decoration: none;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
+        .brand {
+            font-weight: 800;
+            font-size: 1.25rem;
+            color: var(--forest-deep);
+            text-decoration: none;
+            letter-spacing: -0.5px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
 
-    .brand-dot {
-      width: 8px;
-      height: 8px;
-      background-color: var(--calpoly-gold);
-      border-radius: 50%;
-      display: inline-block;
-    }
+        .brand span {
+            color: var(--ocean-accent);
+        }
 
-    nav ul {
-      display: flex;
-      list-style: none;
-      gap: 1.5rem;
-    }
+        .nav-links {
+            display: flex;
+            gap: 28px;
+            list-style: none;
+        }
 
-    nav a {
-      color: var(--text-muted);
-      text-decoration: none;
-      font-size: 0.95rem;
-      font-weight: 500;
-      transition: color 0.2s ease;
-    }
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-muted);
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: color 0.2s ease;
+        }
 
-    nav a:hover {
-      color: var(--forest-dark);
-    }
+        .nav-links a:hover {
+            color: var(--forest-mid);
+        }
 
-    main {
-      max-width: 1080px;
-      margin: 0 auto;
-      padding: 2.5rem 1.5rem 4rem;
-    }
+        /* Top Highlight Hero Section */
+        .hero {
+            padding: 60px 0 40px;
+        }
 
-    /* Top Highlights */
-    .highlights-banner {
-      background: linear-gradient(135deg, var(--forest-dark) 0%, var(--forest-mid) 100%);
-      color: #fff;
-      border-radius: var(--radius);
-      padding: 2.5rem;
-      margin-bottom: 3.5rem;
-      box-shadow: 0 10px 25px -5px rgba(27, 56, 43, 0.15);
-    }
+        .hero-card {
+            background-color: var(--forest-deep);
+            color: var(--white);
+            border-radius: var(--radius-lg);
+            padding: 48px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(27, 56, 43, 0.2);
+            background-image: 
+                radial-gradient(circle at 90% 10%, rgba(42, 123, 136, 0.3) 0%, transparent 40%),
+                radial-gradient(circle at 10% 90%, rgba(224, 159, 83, 0.15) 0%, transparent 35%);
+        }
 
-    .banner-tag {
-      display: inline-block;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      font-size: 0.75rem;
-      font-weight: 700;
-      background-color: var(--calpoly-gold);
-      color: var(--forest-dark);
-      padding: 0.25rem 0.6rem;
-      border-radius: 4px;
-      margin-bottom: 1rem;
-    }
+        .hero-badge {
+            display: inline-block;
+            background-color: rgba(255, 255, 255, 0.12);
+            color: #d2e8dc;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            letter-spacing: 0.5px;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+        }
 
-    .highlights-banner h1 {
-      font-size: 2rem;
-      line-height: 1.3;
-      margin-bottom: 1rem;
-      font-weight: 700;
-    }
+        .hero h1 {
+            font-size: 2.75rem;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 16px;
+            letter-spacing: -1px;
+        }
 
-    .highlights-banner p {
-      color: #e2ede6;
-      max-width: 720px;
-      margin-bottom: 1.75rem;
-      font-size: 1.05rem;
-    }
+        .hero p {
+            font-size: 1.15rem;
+            color: #d0ded6;
+            max-width: 680px;
+            margin-bottom: 28px;
+        }
 
-    .metric-pills {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 1rem;
-    }
+        .hero-highlights {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
 
-    .metric-pill {
-      background: rgba(255, 255, 255, 0.1);
-      border: 1px solid rgba(255, 255, 255, 0.15);
-      border-radius: 8px;
-      padding: 1rem;
-    }
+        .highlight-chip {
+            background-color: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 10px 16px;
+            border-radius: var(--radius-sm);
+            font-size: 0.9rem;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
 
-    .metric-num {
-      display: block;
-      font-size: 1.4rem;
-      font-weight: 700;
-      color: #fff;
-    }
+        /* Section Setup */
+        section {
+            padding: 48px 0;
+        }
 
-    .metric-label {
-      font-size: 0.85rem;
-      color: #bed7c8;
-    }
+        .section-header {
+            margin-bottom: 32px;
+        }
 
-    /* Section Styling */
-    section {
-      margin-bottom: 4rem;
-    }
+        .section-header h2 {
+            font-size: 1.85rem;
+            color: var(--forest-deep);
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
 
-    .section-header {
-      margin-bottom: 1.75rem;
-    }
+        .section-header p {
+            color: var(--text-muted);
+            font-size: 1rem;
+        }
 
-    .section-header h2 {
-      font-size: 1.6rem;
-      color: var(--forest-dark);
-      font-weight: 700;
-    }
+        /* Story / Timeline Section */
+        .timeline {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+            position: relative;
+        }
 
-    .section-header p {
-      color: var(--text-muted);
-      font-size: 0.95rem;
-    }
+        .timeline-item {
+            background: var(--white);
+            border-radius: var(--radius-md);
+            padding: 28px;
+            box-shadow: var(--card-shadow);
+            border-left: 5px solid var(--forest-mid);
+            display: grid;
+            grid-template-columns: 140px 1fr;
+            gap: 20px;
+        }
 
-    /* Narrative Arc Cards */
-    .story-track {
-      display: flex;
-      flex-direction: column;
-      gap: 1.5rem;
-    }
+        .timeline-item.beach-accent {
+            border-left-color: var(--ocean-accent);
+        }
 
-    .story-card {
-      background: var(--sand-card);
-      border: 1px solid var(--sand-border);
-      border-radius: var(--radius);
-      padding: 1.75rem;
-      position: relative;
-    }
+        .timeline-date {
+            font-weight: 700;
+            font-size: 0.9rem;
+            color: var(--forest-light);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
 
-    .story-card-tag {
-      font-size: 0.8rem;
-      font-weight: 600;
-      color: var(--pacific-blue);
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      margin-bottom: 0.4rem;
-    }
+        .timeline-content h3 {
+            font-size: 1.25rem;
+            color: var(--forest-deep);
+            margin-bottom: 6px;
+        }
 
-    .story-card h3 {
-      font-size: 1.25rem;
-      color: var(--forest-dark);
-      margin-bottom: 0.5rem;
-    }
+        .timeline-content .role {
+            font-size: 0.9rem;
+            color: var(--ocean-accent);
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
 
-    .story-card p {
-      color: var(--text-main);
-      margin-bottom: 1rem;
-    }
+        .timeline-content p {
+            color: var(--text-dark);
+            font-size: 0.98rem;
+        }
 
-    .takeaway {
-      background-color: #f7f9f6;
-      border-left: 3px solid var(--forest-accent);
-      padding: 0.75rem 1rem;
-      font-size: 0.9rem;
-      color: var(--forest-dark);
-      border-radius: 0 6px 6px 0;
-    }
+        /* Highlights & Accomplishments Grid */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+        }
 
-    /* Projects Grid */
-    .grid-2 {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 1.5rem;
-    }
+        .card {
+            background: var(--white);
+            border-radius: var(--radius-md);
+            padding: 28px;
+            box-shadow: var(--card-shadow);
+            border: 1px solid var(--sand-mid);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
 
-    .project-card {
-      background: var(--sand-card);
-      border: 1px solid var(--sand-border);
-      border-radius: var(--radius);
-      padding: 1.5rem;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-    }
+        .card-tag {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            font-weight: 700;
+            letter-spacing: 1px;
+            color: var(--ocean-accent);
+            margin-bottom: 8px;
+        }
 
-    .project-card h3 {
-      color: var(--forest-dark);
-      font-size: 1.2rem;
-      margin-bottom: 0.5rem;
-    }
+        .card h3 {
+            font-size: 1.3rem;
+            color: var(--forest-deep);
+            margin-bottom: 12px;
+        }
 
-    .tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.4rem;
-      margin-top: 1.25rem;
-    }
+        .card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 16px;
+        }
 
-    .tag {
-      background-color: var(--pacific-soft);
-      color: var(--pacific-blue);
-      padding: 0.2rem 0.6rem;
-      border-radius: 4px;
-      font-size: 0.75rem;
-      font-weight: 600;
-    }
+        .card-stats {
+            background-color: var(--sand-light);
+            padding: 12px 16px;
+            border-radius: var(--radius-sm);
+            font-weight: 700;
+            color: var(--forest-deep);
+            font-size: 0.9rem;
+        }
 
-    /* Life & Trailhead */
-    .life-card {
-      background: #f4efe6;
-      border: 1px solid var(--sand-border);
-      border-radius: var(--radius);
-      padding: 2rem;
-    }
+        /* Beyond the Resume (Interests) Section */
+        .interests-wrapper {
+            background-color: var(--white);
+            border-radius: var(--radius-lg);
+            padding: 36px;
+            box-shadow: var(--card-shadow);
+            border: 1px solid var(--sand-mid);
+        }
 
-    .hobbies-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 1.25rem;
-      margin-top: 1.25rem;
-    }
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-top: 24px;
+        }
 
-    .hobby-item {
-      background: #fff;
-      padding: 1.25rem;
-      border-radius: 8px;
-      border: 1px solid var(--sand-border);
-    }
+        .interest-card {
+            background: var(--sand-light);
+            padding: 20px;
+            border-radius: var(--radius-sm);
+        }
 
-    .hobby-item h4 {
-      color: var(--forest-dark);
-      font-size: 1rem;
-      margin-bottom: 0.35rem;
-    }
+        .interest-card h4 {
+            color: var(--forest-deep);
+            font-size: 1.05rem;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
 
-    .hobby-item p {
-      font-size: 0.88rem;
-      color: var(--text-muted);
-    }
+        .interest-card p {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
 
-    /* Contact Strip */
-    .contact-box {
-      border-top: 1px solid var(--sand-border);
-      padding-top: 3rem;
-      text-align: center;
-    }
+        /* Footer / Contact Section */
+        footer {
+            margin-top: 40px;
+            background-color: var(--forest-deep);
+            color: var(--white);
+            padding: 48px 0;
+            border-top: 4px solid var(--sun-accent);
+        }
 
-    .contact-box h2 {
-      color: var(--forest-dark);
-      margin-bottom: 0.5rem;
-    }
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
 
-    .contact-box p {
-      color: var(--text-muted);
-      margin-bottom: 1.5rem;
-    }
+        .footer-text h2 {
+            font-size: 1.5rem;
+            margin-bottom: 6px;
+        }
 
-    .contact-links {
-      display: flex;
-      justify-content: center;
-      gap: 1.25rem;
-      flex-wrap: wrap;
-    }
+        .footer-text p {
+            color: #a3c2b0;
+            font-size: 0.95rem;
+        }
 
-    .btn {
-      display: inline-block;
-      background: var(--forest-mid);
-      color: #fff;
-      padding: 0.75rem 1.5rem;
-      border-radius: 6px;
-      text-decoration: none;
-      font-weight: 600;
-      font-size: 0.95rem;
-      transition: background 0.2s ease;
-    }
+        .btn {
+            display: inline-block;
+            background-color: var(--sun-accent);
+            color: var(--forest-deep);
+            font-weight: 700;
+            padding: 12px 24px;
+            border-radius: var(--radius-sm);
+            text-decoration: none;
+            transition: transform 0.2s ease, background-color 0.2s ease;
+        }
 
-    .btn:hover {
-      background: var(--forest-dark);
-    }
+        .btn:hover {
+            background-color: #ebd18c;
+            transform: translateY(-2px);
+        }
 
-    .btn-secondary {
-      background: transparent;
-      border: 1px solid var(--forest-mid);
-      color: var(--forest-mid);
-    }
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
 
-    .btn-secondary:hover {
-      background: #f0ede6;
-      color: var(--forest-dark);
-    }
+            .hero-card {
+                padding: 28px;
+            }
 
-    @media (max-width: 640px) {
-      .nav-container {
-        flex-direction: column;
-        gap: 0.75rem;
-        text-align: center;
-      }
-      .highlights-banner {
-        padding: 1.5rem;
-      }
-      .highlights-banner h1 {
-        font-size: 1.5rem;
-      }
-    }
-  </style>
+            .timeline-item {
+                grid-template-columns: 1fr;
+                gap: 6px;
+            }
+
+            .grid-2, .grid-3 {
+                grid-template-columns: 1fr;
+            }
+
+            .nav-links {
+                gap: 16px;
+            }
+
+            .footer-content {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+    </style>
 </head>
 <body>
 
-  <header>
-    <div class="nav-container">
-      <a href="#" class="brand"><span class="brand-dot"></span> Alex Rivera</a>
-      <nav>
-        <ul>
-          <li><a href="#story">Journey</a></li>
-          <li><a href="#work">Projects</a></li>
-          <li><a href="#trailhead">Beyond Work</a></li>
-          <li><a href="#connect">Contact</a></li>
-        </ul>
-      </nav>
-    </div>
-  </header>
-
-  <main>
-    <section class="highlights-banner">
-      <span class="banner-tag">Cal Poly SLO • Software Engineering '25</span>
-      <h1>Building scalable systems by weekday, chasing coastal trails by weekend.</h1>
-      <p>I like breaking big, chaotic engineering problems down into clean, maintainable tools. Grounded in SLO's "Learn by Doing" culture, I bring genuine curiosity, grit, and high energy to teams that move fast.</p>
-      
-      <div class="metric-pills">
-        <div class="metric-pill">
-          <span class="metric-num">3 Internships</span>
-          <span class="metric-label">Full-stack & distributed systems</span>
+    <header>
+        <div class="container nav-wrapper">
+            <a href="#" class="brand">🌲 Alex <span>Rivera</span></a>
+            <ul class="nav-links">
+                <li><a href="#story">My Journey</a></li>
+                <li><a href="#projects">Work & Impact</a></li>
+                <li><a href="#interests">Beyond the Screen</a></li>
+                <li><a href="#contact">Connect</a></li>
+            </ul>
         </div>
-        <div class="metric-pill">
-          <span class="metric-num">14 Peaks</span>
-          <span class="metric-label">Summited across the Central Coast</span>
-        </div>
-        <div class="metric-pill">
-          <span class="metric-num">Lead Builder</span>
-          <span class="metric-label">Cal Poly Solar Regatta Telemetry</span>
-        </div>
-      </div>
-    </section>
+    </header>
 
-    <section id="story">
-      <div class="section-header">
-        <h2>How I Got Here</h2>
-        <p>The progression from accidental tinkerer to deliberate team engineer.</p>
-      </div>
-
-      <div class="story-track">
-        <article class="story-card">
-          <div class="story-card-tag">Phase 1 • The Spark</div>
-          <h3>Dismantling old gear in a garage</h3>
-          <p>Before any formal CS classes, I was the kid trying to flash custom Linux builds onto obsolete family laptops and rebuilding mountain bike suspensions with hardware-store washers. It wasn't clean work, but it killed any fear of hitting a roadblock or voiding a warranty.</p>
-          <div class="takeaway"><strong>Lesson carried over:</strong> If you don't know how the subsystem works, inspect the edge cases before assuming it's broken.</div>
-        </article>
-
-        <article class="story-card">
-          <div class="story-card-tag">Phase 2 • The Reality Check</div>
-          <h3>From solo hacking to team coordination at Cal Poly</h3>
-          <p>Walking into university project teams quickly proved that writing clever code doesn't matter if nobody else can debug your pull request at 1 AM. Taking ownership of our team's sensor intake pipeline meant spending more time drafting clean interface specs and setting up CI workflows than writing isolated logic.</p>
-          <div class="takeaway"><strong>Lesson carried over:</strong> Simple, well-documented architecture beats clever, brittle solutions every time.</div>
-        </article>
-
-        <article class="story-card">
-          <div class="story-card-tag">Phase 3 • Shipping to Prod</div>
-          <h3>Production fire drills during my junior internship</h3>
-          <p>Working on an internal ingest service meant real database locks, real latency regressions, and post-mortems where pointing fingers wasn't an option. I spent three months finding micro-optimizations in high-throughput pipelines and realized I enjoy back-end plumbing just as much as front-end interaction.</p>
-          <div class="takeaway"><strong>Lesson carried over:</strong> Measure twice, profile your queries, and run realistic benchmarks before merging.</div>
-        </article>
-      </div>
-    </section>
-
-    <section id="work">
-      <div class="section-header">
-        <h2>Selected Engineering Work</h2>
-        <p>Tools designed to solve real operational bottlenecks.</p>
-      </div>
-
-      <div class="grid-2">
-        <div class="project-card">
-          <div>
-            <h3>Coastline Telemetry Pipeline</h3>
-            <p>Designed and deployed an end-to-end data collector for an electric boat competition. Gathered real-time battery cell voltage, motor temps, and GPS logs over LoRaWAN, rendering health dashboards under choppy connection windows.</p>
-          </div>
-          <div class="tags">
-            <span class="tag">Go</span>
-            <span class="tag">PostgreSQL</span>
-            <span class="tag">LoRaWAN</span>
-            <span class="tag">TimescaleDB</span>
-          </div>
-        </div>
-
-        <div class="project-card">
-          <div>
-            <h3>TrailNode Community Tracker</h3>
-            <p>A mobile-optimized route scout used by 200+ local SLO hikers to flag washouts, fallen branches, and fresh mud along Morro Bay back-trails. Zero bloated dependencies, fast cache-first offline service workers.</p>
-          </div>
-          <div class="tags">
-            <span class="tag">TypeScript</span>
-            <span class="tag">React</span>
-            <span class="tag">Node.js</span>
-            <span class="tag">Tailwind</span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="trailhead">
-      <div class="section-header">
-        <h2>Off The Clock</h2>
-        <p>What keeps me sharp, patient, and grounded when my laptop is shut.</p>
-      </div>
-
-      <div class="life-card">
-        <p>Software is great, but sitting in an ergonomic chair for 10 hours straight is not. Living between the Santa Lucia range and the Pacific means I measure my weeks by trail mileage and tide charts as much as sprint tickets.</p>
+    <main class="container">
         
-        <div class="hobbies-grid">
-          <div class="hobby-item">
-            <h4>Montana de Oro Regular</h4>
-            <p>Usually running the Hazard Peak trail at dusk or checking out tide pools around Corallina Cove.</p>
-          </div>
-          <div class="hobby-item">
-            <h4>Analog Photography</h4>
-            <p>Shooting HP5 on an old Pentax K1000. It forces you to compose carefully when you only have 36 shots.</p>
-          </div>
-          <div class="hobby-item">
-            <h4>Pour-Over Precision</h4>
-            <p>Dialing in light roasts on a V60. Equal parts morning ritual and minor obsession with flow rates.</p>
-          </div>
-        </div>
-      </div>
-    </section>
+        <section class="hero">
+            <div class="hero-card">
+                <span class="hero-badge">Cal Poly '26 • CS & Trail Enthusiast</span>
+                <h1>Building solid software, exploring big mountains, and getting stuff done.</h1>
+                <p>I'm a senior studying Computer Science at Cal Poly San Luis Obispo. I balance heavy-duty coding and project management with long weekend hikes along the Central Coast and late afternoon surf sessions.</p>
+                <div class="hero-highlights">
+                    <div class="highlight-chip">📍 San Luis Obispo, CA</div>
+                    <div class="highlight-chip">💻 Software Eng & Product</div>
+                    <div class="highlight-chip">🌊 100+ Hours Coastline Hikes</div>
+                </div>
+            </div>
+        </section>
 
-    <section id="connect" class="contact-box">
-      <h2>Let's Grab Coffee or Hop on a Call</h2>
-      <p>I'm currently looking for full-time software engineering roles starting Summer 2025. Always up for talking systems, internships, or best spots to camp in Big Sur.</p>
-      <div class="contact-links">
-        <a href="mailto:alex.rivera.example@calpoly.edu" class="btn">Send an Email</a>
-        <a href="https://github.com" target="_blank" rel="noopener" class="btn btn-secondary">GitHub Profile</a>
-        <a href="https://linkedin.com" target="_blank" rel="noopener" class="btn btn-secondary">LinkedIn</a>
-      </div>
-    </section>
-  </main>
+        <section id="story">
+            <div class="section-header">
+                <h2>How I Got Here</h2>
+                <p>The path that shaped how I think, build, and work with teams.</p>
+            </div>
+
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-date">2023 - Present</div>
+                    <div class="timeline-content">
+                        <h3>Cal Poly SLO & Learn by Doing</h3>
+                        <div class="role">Computer Science Major</div>
+                        <p>Dived headfirst into system design, software engineering practices, and late-night lab sessions. The "Learn by Doing" philosophy hit hard early on—I realized I learn best by shipping real tools, breaking things, and fixing them with a team.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item beach-accent">
+                    <div class="timeline-date">Summer 2025</div>
+                    <div class="timeline-content">
+                        <h3>Software Engineering Intern</h3>
+                        <div class="role">Coastal Tech Solutions (Santa Barbara, CA)</div>
+                        <p>Spent three months working on internal data pipelines. Reduced dynamic page load times by 35% and had to explain my code architecture to non-technical leads weekly. Learned that clear communication is just as critical as writing clean functions.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-date">2024 - Present</div>
+                    <div class="timeline-content">
+                        <h3>Cal Poly Outdoor Club Lead</h3>
+                        <div class="role">Trip Organizer & Board Member</div>
+                        <p>Organizing weekend trips for groups of 20+ students into the Los Padres National Forest. Managing logistics, route planning, safety protocols, and keeping team morale up when weather unexpectedly turns into a downpour.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects">
+            <div class="section-header">
+                <h2>Accomplishments & Projects</h2>
+                <p>A few things I've built that I'm particularly proud of.</p>
+            </div>
+
+            <div class="grid-2">
+                <div class="card">
+                    <div>
+                        <div class="card-tag">Full-Stack Application</div>
+                        <h3>TrailHead Central Coast</h3>
+                        <p>Built a web app that aggregates local SLO hiking trail conditions using crowd-sourced user reports and real-time weather APIs. Solved the problem of outdated state park notices.</p>
+                    </div>
+                    <div class="card-stats">⚡ 1,200+ Active Monthly Users in SLO</div>
+                </div>
+
+                <div class="card">
+                    <div>
+                        <div class="card-tag">Systems & Algorithms</div>
+                        <h3>Smart Campus Parking Predictor</h3>
+                        <p>Partnered with two classmates to train a simple machine learning model that predicts parking lot density at Cal Poly based on class schedules and weather patterns.</p>
+                    </div>
+                    <div class="card-stats">🏆 Top 3 Finish at Local Hackathon</div>
+                </div>
+            </div>
+        </section>
+
+        <section id="interests">
+            <div class="interests-wrapper">
+                <div class="section-header" style="margin-bottom: 16px;">
+                    <h2>Beyond the Resume</h2>
+                    <p>Work is a big part of my life, but it's not the whole story. Here's what keeps me energized.</p>
+                </div>
+
+                <div class="grid-3">
+                    <div class="interest-card">
+                        <h4>🌲 Trail Miles</h4>
+                        <p>Currently trying to hike every major peak in San Luis Obispo County. Bishop Peak is my go-to Tuesday morning head-clearer.</p>
+                    </div>
+                    <div class="interest-card">
+                        <h4>🏄‍♂️ Pacific Swells</h4>
+                        <p>Still learning to properly read waves at Morro Bay, but standard weekend routine usually involves wet suits and cold water.</p>
+                    </div>
+                    <div class="interest-card">
+                        <h4>☕ Espresso Tinkering</h4>
+                        <p>I take coffee a bit too seriously. Constantly adjusting grind sizes and extraction times to get the perfect morning shot.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer id="contact">
+        <div class="container footer-content">
+            <div class="footer-text">
+                <h2>Let's build something together.</h2>
+                <p>Looking for full-time opportunities post-graduation or just want to chat trails and tech.</p>
+            </div>
+            <div>
+                <a href="mailto:alex@example.com" class="btn">Get in Touch</a>
+            </div>
+        </div>
+    </footer>
 
 </body>
 </html>
-
-```
